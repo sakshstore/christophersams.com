@@ -1,0 +1,65 @@
+<input type="hidden" #selection>
+
+<!-- Navigation cards -->
+<div class="card-container">
+  <div class="card card-small" (click)="selection.value = 'about'" tabindex="0">
+    <span>&gt; about</span>
+  </div>
+
+  <div class="card card-small" (click)="selection.value = 'projects'" tabindex="0">
+    <span>&gt; projects</span>
+  </div>
+
+  <div class="card card-small" (click)="selection.value = 'links'" tabindex="0">
+    <span>&gt; links</span>
+  </div>
+
+  <div class="card card-small" (click)="selection.value = 'contact'" tabindex="0">
+    <span>&gt; contact</span>
+  </div>
+
+</div>
+
+<!-- Terminal -->
+<div class="terminal" [ngSwitch]="selection.value">
+  <p *ngSwitchDefault><i style="color: green">christophersams.com &gt; </i> about <br>
+    <br>
+    {{ about }}
+    <br>
+    <br>
+    <b style="color: green">&gt; <span class="cursor">|</span></b>
+  </p>
+  <p *ngSwitchCase="'projects'">
+    <i style="color: green">christophersams.com &gt; </i> projects <br>
+    <br>
+    <b *ngFor="let project of projects">
+
+      <a [title]="project.title" href="{{ project.link }}" target="_blank">{{ project.text }}</a> <br>
+
+    </b>
+    <br>
+    <b style="color: green">&gt; <span class="cursor">|</span></b>
+  </p>
+  <p *ngSwitchCase="'links'">
+    <i style="color: green">christophersams.com &gt; </i> links <br>
+    <br>
+    <b *ngFor="let link of links">
+
+      <a href="{{ link.link }}" target="_blank">{{ link.text }}</a> <br>
+
+    </b>
+    <br>
+    <b style="color: green">&gt; <span class="cursor">|</span></b>
+  </p>
+  <p *ngSwitchCase="'contact'">
+    <i style="color: green">christophersams.com &gt; </i> contact <br>
+    <br>
+    <b *ngFor="let contact of contacts">
+
+      <a href="{{ contact.link }}" target="_blank">{{ contact.text }}</a> <br>
+
+    </b>
+    <br>
+    <b style="color: green">&gt; <span class="cursor">|</span></b>
+  </p>
+</div>

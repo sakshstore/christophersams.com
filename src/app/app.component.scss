@@ -24,29 +24,6 @@ p {
   flex: 1;
 }
 
-.toolbar {
-  height: 60px;
-  margin: -8px;
-  display: flex;
-  align-items: center;
-  background-color: #A9A9A9;
-  color: white;
-  font-weight: 600;
-}
-
-.toolbar img {
-  margin: 0 16px;
-}
-
-.toolbar #twitter-logo {
-  height: 40px;
-  margin: 0 16px;
-}
-
-.toolbar #twitter-logo:hover {
-  opacity: 0.8;
-}
-
 .content {
   display: flex;
   margin: 32px auto;
@@ -78,12 +55,14 @@ svg.material-icons:not(:last-child) {
 
 .card {
   border-radius: 4px;
-  border: 1px solid #eee;
-  background-color: #fafafa;
+  border: 1px solid #333333;
+  background-color: #333333;
+  color: lightgray;
+  font-weight: bold;
   height: 40px;
-  width: 200px;
+  width: 70px;
   margin: 0 8px 16px;
-  padding: 16px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -109,7 +88,7 @@ svg.material-icons:not(:last-child) {
 
 .card-container .card:not(.highlight-card):hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 17px rgba(99, 99, 99, 0.35);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.55);
 }
 
 .card-container .card:not(.highlight-card):hover .material-icons path {
@@ -264,6 +243,7 @@ footer a {
 }
 
 .cursor {
+  color: white;
   animation: cursor-blink;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
