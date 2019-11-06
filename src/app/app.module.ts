@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { PageComponent } from './page/page.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PageComponent } from './page/page.component';
   imports: [
     BrowserModule,
     RouterModule,
+    FormsModule,
     // AppRoutingModule
   ],
   providers: [],

@@ -1,4 +1,31 @@
-<h1>Secure Random Password Generator</h1>
-<!-- Todo: Implement PW Gen-->
+<div class="form">
+  <h1>Random Secure Password Generator</h1>
+  <div class="form-input">
+    <span class="form-label">Length:</span>
+    <input class="number-input" #length type="number" placeholder="Length...">
+    <span class="form-label">Iterations:</span>
+    <input class="number-input" #iterations type="number" placeholder="Iterations...">
+    <br>
+  </div>
+  <div class="button-section">
+    <div class="button"
+         (click)="getInput(length.value, iterations.value, 'specialCharacters')">Special Characters
+    </div>
+    <div class="button"
+         (click)="getInput(length.value, iterations.value, 'alphaNumeric')">Alphanumeric
+    </div>
+    <div class="button"
+         (click)="getInput(length.value, iterations.value, 'lettersOnly')">Letters Only
+    </div>
+    <div class="button"
+         (click)="getInput(length.value, iterations.value, 'numericOnly')">Numeric Only
+    </div>
+  </div>
+</div>
 
-<p>Coming soon...</p>
+<div *ngIf="!hidden" class="output">
+<h1>Your Passwords:</h1>
+<p class="password" *ngFor="let password of passwords">
+  <b>{{ password }}</b>
+</p>
+</div>

@@ -1,0 +1,75 @@
+.form {
+  background-color: lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  width: max-content;
+  margin: auto;
+}
+
+.form h1 {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.form-input {
+  width: max-content;
+  margin: 5px auto;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.number-input {
+  padding: 5px;
+  margin: 10px;
+  width: 100px;
+  border: none;
+  border-bottom: 2px solid darkgray;
+}
+
+.button-section {
+  width: max-content;
+  margin: auto;
+  font-weight: bold;
+  align-content: center;
+}
+
+.button {
+  padding: 5px 10px;
+  border: none;
+  margin: 10px;
+  border-bottom: 2px solid darkgray;
+  display: inline-block;
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+}
+
+.button:active {
+  background-color: dimgrey;
+}
+
+.output {
+  background-color: lightgray;
+  max-width: 800px;
+  width: max-content;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  align-content: center;
+}
+
+.output h1 {
+  margin-top: 0;
+}
+
+.password {
+  background-color: #333333;
+  padding: 10px;
+  border-radius: 3px;
+  width: max-content;
+  margin: 15px auto;
+  color: white;
+}
+
