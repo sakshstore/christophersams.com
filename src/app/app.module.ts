@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoverComponent } from './rover/rover.component';
 import { ApodComponent } from './apod/apod.component';
@@ -12,6 +11,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { PageComponent } from './page/page.component';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {ApodService} from './apod/apod.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,9 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     RouterModule,
     FormsModule,
-    // AppRoutingModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ ApodService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

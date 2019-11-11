@@ -1,4 +1,13 @@
 <h1>Astronomy Picture of the Day</h1>
 <!-- Todo: Implement APOD-->
-
-<p>Coming soon...</p>
+<div class="apod-output">
+  <h2 class="apod-title">{{ title }}</h2>
+  <div class="apod-image-container">
+    <a href="{{imageUrl}}" target="_blank">
+      <img *ngIf="imageUrl"class="apod-img" src="{{ imageUrl }}" alt="{{ title }}">
+    </a>
+    <iframe *ngIf="vidUrl" id="apod-vid" src="{{ vidUrl }}" allowfullscreen></iframe>
+    <small class="apod-copyright">{{ copyright }}</small>
+  </div>
+  <p class="apod-explanation">{{ explanation }}</p>
+</div>

@@ -1,1 +1,36 @@
-// Todo: create styles
+.apod-output {
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+.apod-img, .apod-vid {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.apod-title {
+  width: max-content;
+  margin: .5em auto;
+}
+
+.apod-copyright {
+  display: block;
+  text-align: right;
+  color: black;
+}
+
+.apod-image-container {
+  width: 80%;
+  margin: auto;
+}
+
+.apod-explanation {
+  background-color: #333333;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  color: white;
+}
