@@ -7,6 +7,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./mandelbrot.component.scss']
 })
 export class MandelbrotComponent implements OnInit {
+  zoom = 120;
+  slideX = -2.5;
+  slideY = -2.5;
+  iterations = 100;
 
   @ViewChild('mandelbrotCanvas', { static: false }) mandelbrotCanvas: ElementRef;
   public context: CanvasRenderingContext2D;
@@ -16,15 +20,18 @@ export class MandelbrotComponent implements OnInit {
   ngOnInit() {
   }
 
-  calculate(red, green, blue): void {
+  calculate(zoom, iterations, slideX, slideY): void {
+    this.zoom = parseFloat(zoom);
+    this.iterations = parseFloat(iterations);
+    this.slideX = parseFloat(slideX);
+    this.slideY = parseFloat(slideY);
+    this.context.clearRect(0, 0, 600, 600);
 
     for (let x = 0; x < 600; x++) {
       for (let y = 0; y < 600; y++) {
         let i = 0;
-        // tslint:disable-next-line:radix
-        const cx = -2.5 + x / 120;
-        // tslint:disable-next-line:radix
-        const cy = -2.5 + y / 120;
+        const cx = this.slideX + x / zoom;
+        const cy = this.slideY + y / zoom;
         let zx = 0;
         let zy = 0;
 
@@ -34,7 +41,7 @@ export class MandelbrotComponent implements OnInit {
           zy = 2 * xt + cy;
           i++;
         }
-        while (i < 255 && (zx * zx + zy * zy) < 4);
+        while (i < this.iterations && (zx * zx + zy * zy) < 4);
 
         const color = i.toString(16);
         this.context.beginPath();
@@ -45,14 +52,9 @@ export class MandelbrotComponent implements OnInit {
     }
   }
 
-  draw(x, y, color): void {
-    this.context.fillStyle = color;
-    this.context.fillRect(x, y, 1, 1);
-  }
-
   // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit(): void {
     this.context = this.mandelbrotCanvas.nativeElement.getContext('2d');
-    this.calculate(0, 0, 0);
+    this.calculate(this.zoom, this.iterations, this.slideX, this.slideY);
   }
 }
