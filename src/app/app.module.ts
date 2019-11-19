@@ -13,6 +13,7 @@ import { PageComponent } from './page/page.component';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {ApodService} from './apod/apod.service';
+import { MandelbrotComponent } from './mandelbrot/mandelbrot.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ApodService} from './apod/apod.service';
     PwgenComponent,
     ToolbarComponent,
     TerminalComponent,
-    PageComponent
+    PageComponent,
+    MandelbrotComponent
   ],
   imports: [
     BrowserModule,
