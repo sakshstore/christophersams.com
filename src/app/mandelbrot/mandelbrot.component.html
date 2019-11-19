@@ -1,2 +1,24 @@
 <canvas #mandelbrotCanvas width="600" height="600">
 </canvas>
+
+<input #zoomSlider
+       type="range"
+       min="80"
+       max="120"
+       value="120"
+       step="20"
+       (change)="calculate(zoomSlider.value, XSlider.value, YSlider.value)">
+<input #XSlider
+       type="range"
+       min="-2.5"
+       max="-1"
+       value="-2.5"
+       step="0.25"
+       (change)="calculate(zoomSlider.value, XSlider.value, YSlider.value)">
+<input #YSlider
+       type="range"
+       min="-2.5"
+       max="-1"
+       value="-2.5"
+       step="0.25"
+       (change)="calculate(zoomSlider.value, XSlider.value, YSlider.value)">
