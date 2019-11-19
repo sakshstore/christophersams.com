@@ -14,8 +14,8 @@
     <div class="card" (click)="selection.value = 'pwgen'">
       PW Gen
     </div>
-    <div class="card" (click)="selection.value = 'readit'">
-      Readit
+    <div class="card" (click)="selection.value = 'mandelbrot'">
+      Fractals
     </div>
     <div class="card" (click)="selection.value = 'rover'">
       Rover
@@ -29,6 +29,7 @@
     <app-pwgen *ngSwitchCase="'pwgen'"></app-pwgen>
     <app-readit *ngSwitchCase="'readit'"></app-readit>
     <app-rover *ngSwitchCase="'rover'"></app-rover>
+    <app-mandelbrot *ngSwitchCase="'mandelbrot'"></app-mandelbrot>
 
   </div>
 
