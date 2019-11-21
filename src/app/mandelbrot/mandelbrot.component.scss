@@ -1,0 +1,28 @@
+#zoomSlider, #iterationSlider, #xSlider, #ySlider {
+  width: 350px;
+  margin: 10px;
+}
+
+.label-and-range {
+  width: max-content;
+  display: block;
+}
+
+#slider-area {
+  width: max-content;
+  margin: auto;
+  font-weight: bold;
+}
+
+#draw-button {
+
+  padding: 10px;
+  font-weight: bold;
+  font-size: 2em;
+  border-radius: 5px;
+  background-color: #888888;
+}
+
+#button-area {
+  text-align: center;
+}

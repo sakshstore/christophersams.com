@@ -10,7 +10,7 @@ export class MandelbrotComponent implements OnInit {
   zoom = 120;
   slideX = -2.5;
   slideY = -2.5;
-  iterations = 100;
+  iterations = 50;
 
   @ViewChild('mandelbrotCanvas', { static: false }) mandelbrotCanvas: ElementRef;
   public context: CanvasRenderingContext2D;

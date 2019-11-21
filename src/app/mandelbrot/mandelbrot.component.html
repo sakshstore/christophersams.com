@@ -1,28 +1,47 @@
 <canvas #mandelbrotCanvas width="600" height="600">
 </canvas>
-
-<input #zoomSlider
-       type="range"
-       min="40"
-       max="600"
-       value="120"
-       step="20">{{ zoom }}
-<input #iterationsSlider
-       type="range"
-       min="20"
-       max="240"
-       value="100"
-       step="5">{{ iterations }}
-<input #XSlider
-       type="range"
-       min="-2.5"
-       max="1.5"
-       value="-2.5"
-       step="0.25">{{ slideX }}
-<input #YSlider
-       type="range"
-       min="-2.5"
-       max="1.5"
-       value="-2.5"
-       step="0.25">{{ slideY }}
-<button (click)="calculate(zoomSlider.value, iterationsSlider.value, XSlider.value, YSlider.value)">Draw</button>
+<div id="slider-area">
+  <div class="label-and-range">
+    <input #zoomSlider
+           id="zoomSlider"
+           type="range"
+           min="40"
+           max="600"
+           value="{{ zoom }}"
+           step="20">
+    <label for="zoomSlider">Zoom: {{ zoom }}</label>
+  </div>
+  <div class="label-and-range">
+    <input #iterationsSlider
+           id="iterationSlider"
+           type="range"
+           min="1"
+           max="100"
+           value="{{ iterations }}"
+           step="1">
+    <label for="iterationSlider">Iterations: {{ iterations }}</label>
+  </div>
+  <div class="label-and-range">
+    <input #XSlider
+           id="xSlider"
+           type="range"
+           min="-2.5"
+           max="1.5"
+           value="{{ slideX }}"
+           step="0.25">
+    <label for="xSlider">X-Axis: {{ slideX }}</label>
+  </div>
+  <div class="label-and-range">
+    <input #YSlider
+           id="ySlider"
+           type="range"
+           min="-2.5"
+           max="1.5"
+           value="{{ slideY }}"
+           step="0.25">
+    <label for="ySlider">Y-Axis: {{ slideY }}</label>
+  </div>
+</div>
+<div id="button-area">
+  <button id="draw-button" (click)="calculate(zoomSlider.value, iterationsSlider.value, XSlider.value, YSlider.value)">Draw</button>
+</div>
