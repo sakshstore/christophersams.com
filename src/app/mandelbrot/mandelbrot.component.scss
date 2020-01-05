@@ -6,16 +6,19 @@
 .label-and-range {
   width: max-content;
   display: block;
+  padding: 3px 15px 0 5px;
 }
 
 #slider-area {
   width: max-content;
-  margin: auto;
+  margin: 10px auto;
   font-weight: bold;
+  border: 2px solid #888888;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 #draw-button {
-
   padding: 10px;
   font-weight: bold;
   font-size: 2em;
@@ -25,4 +28,17 @@
 
 #button-area {
   text-align: center;
+  margin-top: 10px;
+}
+
+#mandelbrot-canvas {
+  border: 2px outset #888888;
+  border-radius: 5px;
+}
+
+label {
+  background-color: #333333;
+  color: white;
+  padding: 10px 20px;
+  margin: 2px;
 }

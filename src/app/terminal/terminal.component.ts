@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TerminalComponent implements OnInit {
 
   about     = 'Hello everyone and welcome to my website. The purpose of this site' +
-    ' is to display my programming skills.  This site is a single page webapp built' +
-    ' in Angular.  Feel free to check out my other projects or reach out to me. :)';
+    ' is to display my programming skills.  This site is a single page web app built' +
+    ' using Angular.  Feel free to check out my other projects or reach out to me. :)';
 
   projects  = [
     {

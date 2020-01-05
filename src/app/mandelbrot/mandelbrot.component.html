@@ -1,14 +1,14 @@
-<canvas #mandelbrotCanvas width="600" height="600">
-</canvas>
+<canvas id="mandelbrot-canvas" #mandelbrotCanvas width="600" height="600"></canvas>
 <div id="slider-area">
   <div class="label-and-range">
     <input #zoomSlider
            id="zoomSlider"
            type="range"
-           min="40"
-           max="600"
+           min="100"
+           max="1000"
            value="{{ zoom }}"
-           step="20">
+           step="20"
+           (change)="updateSlider('zoom', zoomSlider.value)">
     <label for="zoomSlider">Zoom: {{ zoom }}</label>
   </div>
   <div class="label-and-range">
@@ -16,32 +16,35 @@
            id="iterationSlider"
            type="range"
            min="1"
-           max="100"
+           max="255"
            value="{{ iterations }}"
-           step="1">
+           step="1"
+           (change)="updateSlider('iterations', iterationsSlider.value)">
     <label for="iterationSlider">Iterations: {{ iterations }}</label>
   </div>
   <div class="label-and-range">
-    <input #XSlider
+    <input #xSlider
            id="xSlider"
            type="range"
            min="-2.5"
            max="1.5"
            value="{{ slideX }}"
-           step="0.25">
+           step="0.1"
+           (change)="updateSlider('x', xSlider.value)">
     <label for="xSlider">X-Axis: {{ slideX }}</label>
   </div>
   <div class="label-and-range">
-    <input #YSlider
+    <input #ySlider
            id="ySlider"
            type="range"
            min="-2.5"
            max="1.5"
            value="{{ slideY }}"
-           step="0.25">
+           step="0.25"
+           (change)="updateSlider('y', ySlider.value)">
     <label for="ySlider">Y-Axis: {{ slideY }}</label>
   </div>
 </div>
 <div id="button-area">
-  <button id="draw-button" (click)="calculate(zoomSlider.value, iterationsSlider.value, XSlider.value, YSlider.value)">Draw</button>
+  <button id="draw-button" (click)="calculate(zoomSlider.value, iterationsSlider.value, xSlider.value, ySlider.value)">Draw</button>
 </div>
