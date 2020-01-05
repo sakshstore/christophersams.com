@@ -2,37 +2,23 @@
 
 <div class="content" role="main">
 
-  <input type="hidden" #selection>
-
   <nav class="card-container">
-    <div class="card" (click)="selection.value = 'about'">
-      Home
+    <div class="card">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
     </div>
-    <div class="card" (click)="selection.value = 'apod'">
-      APOD
+    <div class="card">
+      <a routerLink="/apod" routerLinkActive="active">APOD</a>
     </div>
-    <div class="card" (click)="selection.value = 'pwgen'">
-      PW Gen
+    <div class="card">
+      <a routerLink="/pwgen" routerLinkActive="active">PW Gen</a>
     </div>
-    <div class="card" (click)="selection.value = 'mandelbrot'">
-      Fractals
+    <div class="card">
+      <a routerLink="/fractals" routerLinkActive="active">Fractals</a>
     </div>
-    <div class="card" (click)="selection.value = 'rover'">
-      Rover
+    <div class="card">
+      <a routerLink="/rover" routerLinkActive="active">Rover</a>
     </div>
   </nav>
-
-  <div class="content" [ngSwitch]="selection.value">
-
-    <app-terminal *ngSwitchDefault></app-terminal>
-    <app-apod *ngSwitchCase="'apod'"></app-apod>
-    <app-pwgen *ngSwitchCase="'pwgen'"></app-pwgen>
-    <app-readit *ngSwitchCase="'readit'"></app-readit>
-    <app-rover *ngSwitchCase="'rover'"></app-rover>
-    <app-mandelbrot *ngSwitchCase="'mandelbrot'"></app-mandelbrot>
-
-  </div>
-
-
+  <router-outlet></router-outlet>
 </div>
 

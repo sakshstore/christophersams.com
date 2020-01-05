@@ -6,14 +6,27 @@ import { RoverComponent } from './rover/rover.component';
 import { ApodComponent } from './apod/apod.component';
 import { ReaditComponent } from './readit/readit.component';
 import { PwgenComponent } from './pwgen/pwgen.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { PageComponent } from './page/page.component';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {ApodService} from './apod/apod.service';
+import { ApodService } from './apod/apod.service';
 import { MandelbrotComponent } from './mandelbrot/mandelbrot.component';
+
+const appRoutes: Routes = [
+  { path: 'home', component: TerminalComponent },
+  { path: 'apod', component: ApodComponent },
+  { path: 'pwgen', component: PwgenComponent },
+  { path: 'fractals', component: MandelbrotComponent },
+  { path: 'rover', component: RoverComponent },
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  { path: '**', component: TerminalComponent }
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +44,11 @@ import { MandelbrotComponent } from './mandelbrot/mandelbrot.component';
     BrowserModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    )
   ],
   providers: [ ApodService ],
   bootstrap: [ AppComponent ]
