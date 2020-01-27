@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApodService } from './apod/apod.service';
 import { MandelbrotComponent } from './mandelbrot/mandelbrot.component';
+import {RoverService} from './rover/rover.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: TerminalComponent },
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
       { enableTracing: true }
     )
   ],
-  providers: [ ApodService ],
+  providers: [ ApodService, RoverService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

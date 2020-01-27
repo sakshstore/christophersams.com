@@ -1,4 +1,24 @@
 <h1>Mars Rover Photo Search Engine</h1>
 <!-- Todo: Implement Rover -->
+<!--<p>Coming soon...</p>-->
 
-<p>Coming soon...</p>
+<div class="form">
+  <div class="form-input">
+    <span class="form-label">Rover:</span>
+    <select #rover>
+      <option *ngFor="let name of roverNames" [value]="name">{{name}}</option>
+    </select>
+    <span class="form-label">Camera:</span>
+    <select #camera>
+      <option *ngFor="let camera of allCameras" [value]="camera">{{camera}}</option>
+    </select>
+    <span class="form-label">Sol:</span>
+    <input class="number-input" #sol type="text" value="1">
+    <br>
+  </div>
+  <div class="button-section">
+    <div class="button"
+         (click)="getInput(rover.value, sol.value, camera.value)">Search
+    </div>
+  </div>
+</div>
