@@ -11,8 +11,6 @@ export class MandelbrotComponent implements OnInit {
   slideX = -2.5;
   slideY = -2.5;
   iterations = 50;
-  colorInput1 = 255;
-  colorInput2 = 255;
 
   @ViewChild('mandelbrotCanvas', { static: false }) mandelbrotCanvas: ElementRef;
   public context: CanvasRenderingContext2D;

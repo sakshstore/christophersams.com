@@ -9,12 +9,11 @@ import { PwgenComponent } from './pwgen/pwgen.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TerminalComponent } from './terminal/terminal.component';
-import { PageComponent } from './page/page.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApodService } from './apod/apod.service';
 import { MandelbrotComponent } from './mandelbrot/mandelbrot.component';
-import {RoverService} from './rover/rover.service';
+import { RoverService } from './rover/rover.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: TerminalComponent },
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
     PwgenComponent,
     ToolbarComponent,
     TerminalComponent,
-    PageComponent,
     MandelbrotComponent
   ],
   imports: [

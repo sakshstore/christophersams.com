@@ -1,8 +1,5 @@
-<h1>Mars Rover Photo Search Engine</h1>
-<!-- Todo: Implement Rover -->
-<!--<p>Coming soon...</p>-->
-
 <div class="form">
+  <h1>Mars Rover Photo Search Engine</h1>
   <div class="form-input">
     <span class="form-label">Rover:</span>
     <select #rover>
@@ -23,25 +20,27 @@
   </div>
 </div>
 <div class="search-results" *ngIf="noPhotos">{{noPhotosError}}</div>
-<div class="search-results" *ngFor="let photo of photos">
-  <a href="{{photo.img_src}}" target="_blank">
-    <img class="rover-photos" src="{{photo.img_src}}" alt="Rover Photo">
-  </a>
-  <div>
-    ID: {{photo.id}}<br>
-    Sol: {{photo.sol}}<br>
-    Camera: {{photo.camera.full_name}} ({{photo.camera.name}})<br>
-    Earth Date: {{photo.earth_date}}<br>
-    <dl>
-      <dt>Rover:</dt>
-      <dd>ID: {{photo.rover.id}}</dd>
-      <dd>Name: {{photo.rover.name}}</dd>
-      <dd>Landing Date: {{photo.rover.landing_date}}</dd>
-      <dd>Launch Date: {{photo.rover.launch_date}}</dd>
-      <dd>Max Sol: {{photo.rover.max_sol}}</dd>
-      <dd>Max Date: {{photo.rover.max_date}}</dd>
-      <dd>Photos: {{photo.rover.total_photos}}</dd>
-      <dd>Status: {{photo.rover.status}}</dd>
-    </dl>
+<div *ngIf="!noPhotos">
+  <div class="search-results" *ngFor="let photo of photos">
+    <a href="{{photo.img_src}}" target="_blank">
+      <img class="rover-photos" src="{{photo.img_src}}" alt="Rover Photo">
+    </a>
+    <div>
+      ID: {{photo.id}}<br>
+      Sol: {{photo.sol}}<br>
+      Camera: {{photo.camera.full_name}} ({{photo.camera.name}})<br>
+      Earth Date: {{photo.earth_date}}<br>
+      <dl>
+        <dt>Rover:</dt>
+        <dd>ID: {{photo.rover.id}}</dd>
+        <dd>Name: {{photo.rover.name}}</dd>
+        <dd>Landing Date: {{photo.rover.landing_date}}</dd>
+        <dd>Launch Date: {{photo.rover.launch_date}}</dd>
+        <dd>Max Sol: {{photo.rover.max_sol}}</dd>
+        <dd>Max Date: {{photo.rover.max_date}}</dd>
+        <dd>Photos: {{photo.rover.total_photos}}</dd>
+        <dd>Status: {{photo.rover.status}}</dd>
+      </dl>
+    </div>
   </div>
 </div>
