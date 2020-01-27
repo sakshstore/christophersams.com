@@ -32,6 +32,16 @@
     Sol: {{photo.sol}}<br>
     Camera: {{photo.camera.full_name}} ({{photo.camera.name}})<br>
     Earth Date: {{photo.earth_date}}<br>
-    Rover: {{photo.rover}}
+    <dl>
+      <dt>Rover:</dt>
+      <dd>ID: {{photo.rover.id}}</dd>
+      <dd>Name: {{photo.rover.name}}</dd>
+      <dd>Landing Date: {{photo.rover.landing_date}}</dd>
+      <dd>Launch Date: {{photo.rover.launch_date}}</dd>
+      <dd>Max Sol: {{photo.rover.max_sol}}</dd>
+      <dd>Max Date: {{photo.rover.max_date}}</dd>
+      <dd>Photos: {{photo.rover.total_photos}}</dd>
+      <dd>Status: {{photo.rover.status}}</dd>
+    </dl>
   </div>
 </div>

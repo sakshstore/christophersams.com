@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoverCameras, RoverNames } from './rover.lists';
 import { RoverService } from './rover.service';
+import { Photo } from "./photo";
 
 @Component({
   selector: 'app-rover',
@@ -32,7 +33,8 @@ export class RoverComponent implements OnInit {
   sol: number;
   date: string;
   data: any;
-  photos: [] = [];
+  photos: Photo[] = [];
+  cameras: [];
 
   constructor(private apodService: RoverService) {
     this.getInput('curiosity', '100', 'FHAZ', '1');
@@ -67,9 +69,8 @@ export class RoverComponent implements OnInit {
 
   showData(data) {
     if (data.photos) {
-      this.photos = data.photos;
-      for (let i = 0; i < data.photos; i++) {
-      }
+      this.photos = data.photos as Photo[];
+      this.cameras = this.photos[0].rover.cameras;
     }
     console.log(this.photos);
   }
