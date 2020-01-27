@@ -11,8 +11,9 @@ export class  RoverService {
   constructor(private http: HttpClient) {}
 
   getRoverResponse(rover: string, page: string, sol: string, camera?: string): Observable<HttpResponse<unknown>> {
-    let roverUrl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/';
-    roverUrl += `${rover}/photos?page=${page}`;
+    let roverUrl = 'https://christophersams.com/nasa_oapi_service/rover.php';
+    roverUrl += `?rover=${rover}`;
+    roverUrl += `&page=${page}`;
     if (camera) {
       roverUrl += `&camera=${camera}`;
     }

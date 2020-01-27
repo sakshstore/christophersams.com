@@ -24,25 +24,35 @@ export class RoverComponent implements OnInit {
     RoverCameras.PANCAM,
     RoverCameras.MINITES
   ];
+  noPhotos = false;
+  noPhotosError = 'There were no photos that matched your search, try again.';
   rover: string;
   page: number;
   camera: Partial<RoverCameras>;
   sol: number;
   date: string;
+  data: any;
+  photos: [] = [];
 
-  constructor(private apodService: RoverService) { }
+  constructor(private apodService: RoverService) {
+    this.getInput('curiosity', '100', 'FHAZ', '1');
+  }
 
   ngOnInit() {
   }
 
   async getInput(
     rover: string,
-    sol: any,
+    sol?: any,
     camera?: string,
     page?: any
   ): Promise<void> {
     if (!page) {
       page = '1';
+    }
+    if (!sol) {
+      alert('Please enter a sol.  This is the number of Mars days since the landing of the selected rover.');
+      return;
     }
     if (camera) {
       await this.apodService.getRoverResponse(rover as string, page as string, sol as string, camera)
@@ -56,6 +66,11 @@ export class RoverComponent implements OnInit {
   }
 
   showData(data) {
-    console.log(data);
+    if (data.photos) {
+      this.photos = data.photos;
+      for (let i = 0; i < data.photos; i++) {
+      }
+    }
+    console.log(this.photos);
   }
 }

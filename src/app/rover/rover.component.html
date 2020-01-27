@@ -13,12 +13,25 @@
       <option *ngFor="let camera of allCameras" [value]="camera">{{camera}}</option>
     </select>
     <span class="form-label">Sol:</span>
-    <input class="number-input" #sol type="text" value="1">
+    <input class="number-input" #sol type="text" value="100">
     <br>
   </div>
   <div class="button-section">
     <div class="button"
          (click)="getInput(rover.value, sol.value, camera.value)">Search
     </div>
+  </div>
+</div>
+<div class="search-results" *ngIf="noPhotos">{{noPhotosError}}</div>
+<div class="search-results" *ngFor="let photo of photos">
+  <a href="{{photo.img_src}}" target="_blank">
+    <img class="rover-photos" src="{{photo.img_src}}" alt="Rover Photo">
+  </a>
+  <div>
+    ID: {{photo.id}}<br>
+    Sol: {{photo.sol}}<br>
+    Camera: {{photo.camera.full_name}} ({{photo.camera.name}})<br>
+    Earth Date: {{photo.earth_date}}<br>
+    Rover: {{photo.rover}}
   </div>
 </div>
