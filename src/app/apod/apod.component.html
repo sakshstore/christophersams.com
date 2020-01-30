@@ -1,6 +1,7 @@
 <h1>Astronomy Picture of the Day</h1>
 <!-- Todo: Implement APOD-->
-<div class="apod-output">
+<div *ngIf="serviceUnavailable" class="apod-output">{{serviceUnavailableError}}</div>
+<div *ngIf="!serviceUnavailable" class="apod-output">
   <h2 class="apod-title">{{ title }}</h2>
   <div class="apod-image-container">
     <a href="{{imageUrl}}" target="_blank">

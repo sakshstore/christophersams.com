@@ -27,6 +27,8 @@ export class RoverComponent implements OnInit {
   ];
   noPhotos = false;
   noPhotosError = 'There were no photos that matched your search, try again.';
+  serviceUnavailable = false;
+  serviceUnavailableError = 'We can\'t reach the Rover Photos service at the moment :(';
   rover: string;
   photos: Photo[] = [];
   cameras: [];
@@ -57,16 +59,26 @@ export class RoverComponent implements OnInit {
 
     if (camera) {
       await this.roverService.getRoverResponse(rover as string, page as string, sol as string, camera)
-        .subscribe(res => this.showData({ ...res.body }));
+        .subscribe(
+          res =>  this.showData({ ...res.body }),
+          (error) => this.displayError(error));
       return;
     } else {
       await this.roverService.getRoverResponse(rover as string, page as string, sol as string)
-        .subscribe(res => this.showData({ ...res.body }));
+        .subscribe(
+          res =>  this.showData({ ...res.body }),
+          (error) => this.displayError(error));
       return;
     }
   }
 
+  displayError(error) {
+    console.log(error);
+    this.serviceUnavailable = true;
+  }
+
   showData(data) {
+    this.serviceUnavailable = false;
     if (data.photos.length > 0) {
       this.photos = data.photos as Photo[];
       this.cameras = this.photos[0].rover.cameras;

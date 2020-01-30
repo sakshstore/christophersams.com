@@ -7,23 +7,32 @@ import { ApodService } from './apod.service';
   styleUrls: ['./apod.component.scss']
 })
 export class ApodComponent implements OnInit {
-  apodData = {};
+  apodData: {};
   copyright: string;
   imageUrl: string;
   vidUrl: string;
   explanation: string;
   title: string;
+  serviceUnavailable = false;
+  serviceUnavailableError = 'We can\'t reach the Astronomy Photo of the Day service at the moment :(';
 
   constructor(private apodService: ApodService) { }
 
-  async subcribeToApodService(): Promise<void> {
+  async subscribeToApodService(): Promise<void> {
     await this.apodService.getApodResponse()
-      .subscribe(res => this.showData({ ...res.body }));
+      .subscribe(
+        res => this.showData({ ...res.body }),
+        (error) => this.displayError(error));
   }
 
   ngOnInit() {
     // @ts-ignore
-    this.subcribeToApodService();
+    this.subscribeToApodService();
+  }
+
+  displayError(error) {
+    console.log(error);
+    this.serviceUnavailable = true;
   }
 
   showData(data) {

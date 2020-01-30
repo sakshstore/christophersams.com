@@ -20,7 +20,8 @@
   </div>
 </div>
 <div class="search-results" *ngIf="noPhotos">{{noPhotosError}}</div>
-<div *ngIf="!noPhotos">
+<div class="search-results" *ngIf="serviceUnavailable">{{serviceUnavailableError}}</div>
+<div *ngIf="!noPhotos && !serviceUnavailable">
   <div class="search-results" *ngFor="let photo of photos">
     <a href="{{photo.img_src}}" target="_blank">
       <img class="rover-photos" src="{{photo.img_src}}" alt="Rover Photo">
