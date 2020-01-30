@@ -21,4 +21,6 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeDefined();
   });
+
+  // TODO: Write more tests for this component
 });

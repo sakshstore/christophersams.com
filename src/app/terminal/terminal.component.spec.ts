@@ -22,4 +22,6 @@ describe('TerminalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO: Write more tests for this component
 });
