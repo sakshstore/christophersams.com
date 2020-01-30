@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div *ngIf="!hidden" class="output">
+<div *ngIf="!noOutput" class="output">
 <h1>Your Passwords:</h1>
 <p class="password" *ngFor="let password of passwords">
   <b>{{ password }}</b>

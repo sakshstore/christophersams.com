@@ -10,7 +10,7 @@ export class PwgenComponent implements OnInit {
   passwords = [];
   length = 0;
   iterations = 0;
-  hidden = true;
+  noOutput = true;
 
   constructor() {}
 
@@ -21,16 +21,16 @@ export class PwgenComponent implements OnInit {
     return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
   }
 
-  getLowercaseLetters() {
+  getLowercaseLetter() {
     return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
   }
 
-  getNumber() {
+  getNumberString() {
     return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
   }
 
   generatePw(length, iterations, charType) {
-    this.hidden = false;
+    this.noOutput = false;
     this.passwords = [];
     this.length = length;
     this.iterations = iterations;
@@ -52,9 +52,9 @@ export class PwgenComponent implements OnInit {
           if (randCharTypeChoice === 0) {
             char = this.getUppercaseLetter();
           } else if (randCharTypeChoice === 1) {
-            char = this.getLowercaseLetters();
+            char = this.getLowercaseLetter();
           } else if (randCharTypeChoice === 2) {
-            char = this.getNumber();
+            char = this.getNumberString();
           }
 
         } else if (charType === 'lettersOnly') {
@@ -63,11 +63,11 @@ export class PwgenComponent implements OnInit {
           if (randCharTypeChoice === 0) {
             char = this.getUppercaseLetter();
           } else {
-            char = this.getLowercaseLetters();
+            char = this.getLowercaseLetter();
           }
 
         } else if (charType === 'numericOnly') {
-          char = this.getNumber();
+          char = this.getNumberString();
         }
 
         password += [char];
