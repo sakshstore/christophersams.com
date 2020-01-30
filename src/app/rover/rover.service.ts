@@ -20,7 +20,6 @@ export class  RoverService {
     if (sol) {
       roverUrl += `&sol=${sol}`;
     }
-    roverUrl += `&api_key=JCSwd1cT7mVu4SJRFG889caSY58fA9YfSeiQbX5F`;
     return this.roverData = this.http.get(roverUrl, { observe: 'response' });
   }
 }
