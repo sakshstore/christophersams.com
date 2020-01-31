@@ -32,11 +32,6 @@ describe('RoverComponent', () => {
     expect(component.roverNames.length).toEqual(3);
   });
 
-  it('pulls in the camera names', () => {
-    expect(component.allCameras).toBeDefined();
-    expect(component.allCameras.length).toEqual(9);
-  });
-
   it('sets noPhotos to false', () => {
     expect(component.noPhotos).toBeDefined();
     expect(component.noPhotos).toBeFalsy();
@@ -66,7 +61,7 @@ describe('RoverComponent', () => {
 
   it('calls getInput', () => {
     spyOn(component, 'getInput');
-    component.getInput('curiosity');
+    component.getInput('curiosity', 'FHAZ');
     expect(component.getInput).toHaveBeenCalled();
   });
 
@@ -74,5 +69,31 @@ describe('RoverComponent', () => {
     spyOn(component, 'displayError');
     component.displayError({});
     expect(component.serviceUnavailable).toBeTruthy();
+  });
+
+  it('sets the rover and cameraList when setRover is called', () => {
+    component.setRover('spirit');
+    expect(component.currentRover).toEqual('spirit');
+    expect(component.currentCameraList.length === component.camerasByRover.spirit.length).toBeTruthy();
+  });
+
+  it('sets the curiosityCameras on init', () => {
+    expect(component.curiosityCameras).toBeDefined();
+    expect(component.curiosityCameras.length).toEqual(6);
+  });
+
+  it('sets the opportunityOrSpiritCameras on init', () => {
+    expect(component.opportunityAndSpiritCameras).toBeDefined();
+    expect(component.opportunityAndSpiritCameras.length).toEqual(5);
+  });
+
+  it('sets the page on init', () => {
+    expect(component.page).toBeDefined();
+    expect(component.page).toEqual(1);
+  });
+
+  it('sets the sol on init', () => {
+    expect(component.sol).toBeDefined();
+    expect(component.sol).toEqual(100);
   });
 });
