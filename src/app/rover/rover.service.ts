@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class  RoverService {
-  // I'll switch to this once I add the service to my website
-  // roverUrl = 'https://christophersams.com/nasa_oapi_service/rover.php';
   roverData = {};
 
   constructor(private http: HttpClient) {}
