@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TerminalComponent } from './terminal.component';
+import { isArray } from 'util';
 
 describe('TerminalComponent', () => {
   let component: TerminalComponent;
@@ -23,5 +24,26 @@ describe('TerminalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // TODO: Write more tests for this component
+  it('should create an about property with type string', () => {
+    expect(component.about).toBeDefined();
+    expect(typeof component.about === 'string').toBeTruthy();
+  });
+
+  it('should create an projects property with type array', () => {
+    expect(component.projects).toBeDefined();
+    expect(isArray(component.projects)).toBeTruthy();
+    expect(component.projects.length > 0).toBeTruthy();
+  });
+
+  it('should create an links property with type array', () => {
+    expect(component.links).toBeDefined();
+    expect(isArray(component.links)).toBeTruthy();
+    expect(component.links.length > 0).toBeTruthy();
+  });
+
+  it('should create an contacts property with type array', () => {
+    expect(component.contacts).toBeDefined();
+    expect(isArray(component.contacts)).toBeTruthy();
+    expect(component.contacts.length > 0).toBeTruthy();
+  });
 });
