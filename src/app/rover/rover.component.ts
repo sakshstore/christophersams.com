@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CuriosityCameras, OpportunityAndSpiritCameras, RoverNames} from './rover.lists';
-import {RoverService} from './rover.service';
-import {Photo} from './photo';
+import { CuriosityCameras, OpportunityAndSpiritCameras, RoverNames } from './rover.lists';
+import { RoverService } from './rover.service';
+import { Photo } from './photo';
 
 @Component({
   selector: 'app-rover',
