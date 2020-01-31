@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TerminalComponent } from './terminal.component';
-import {isArray} from "util";
+import { isArray } from 'util';
 
 describe('TerminalComponent', () => {
   let component: TerminalComponent;
