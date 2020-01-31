@@ -3,21 +3,31 @@
 <div class="content" role="main">
 
   <nav class="card-container">
-    <div class="card">
-      <a routerLink="/home" routerLinkActive="active">Home</a>
-    </div>
-    <div class="card">
-      <a routerLink="/apod" routerLinkActive="active">APOD</a>
-    </div>
-    <div class="card">
-      <a routerLink="/pwgen" routerLinkActive="active">PW Gen</a>
-    </div>
-    <div class="card">
-      <a routerLink="/fractals" routerLinkActive="active">Fractals</a>
-    </div>
-    <div class="card">
-      <a routerLink="/rover" routerLinkActive="active">Rover</a>
-    </div>
+    <a routerLink="/home" routerLinkActive="active">
+      <div class="card">
+        Home
+      </div>
+    </a>
+    <a routerLink="/apod" routerLinkActive="active">
+      <div class="card">
+        APOD
+      </div>
+    </a>
+    <a routerLink="/pwgen" routerLinkActive="active">
+      <div class="card">
+        PW Gen
+      </div>
+    </a>
+    <a routerLink="/fractals" routerLinkActive="active">
+      <div class="card">
+        Fractals
+      </div>
+    </a>
+    <a routerLink="/rover" routerLinkActive="active">
+      <div class="card">
+        Rover
+      </div>
+    </a>
   </nav>
   <router-outlet></router-outlet>
 </div>
