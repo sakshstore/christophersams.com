@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RoverComponent } from './rover.component';
 import {RoverService} from './rover.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import createSpy = jasmine.createSpy;
 
 describe('RoverComponent', () => {
   let component: RoverComponent;
@@ -88,12 +87,12 @@ describe('RoverComponent', () => {
   });
 
   it('sets the page on init', () => {
-    expect(component.page).toBeDefined();
-    expect(component.page).toEqual(1);
+    expect(component.currentPage).toBeDefined();
+    expect(component.currentPage).toEqual(1);
   });
 
   it('sets the sol on init', () => {
-    expect(component.sol).toBeDefined();
-    expect(component.sol).toEqual(100);
+    expect(component.currentSol).toBeDefined();
+    expect(component.currentSol).toEqual(100);
   });
 });

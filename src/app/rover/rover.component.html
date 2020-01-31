@@ -10,7 +10,7 @@
       <option *ngFor="let camera of currentCameraList" [value]="camera">{{camera}}</option>
     </select>
     <span class="form-label">Sol:</span>
-    <input class="number-input" #solSelection type="number" value="{{sol}}">
+    <input class="number-input" #solSelection type="number" value="{{currentSol}}">
     <br>
   </div>
   <div class="button-section">
@@ -44,17 +44,17 @@
       </dl>
     </div>
   </div>
-  <div *ngIf="!noPhotos && !serviceUnavailable && page > 1">
+  <div *ngIf="!noPhotos && !serviceUnavailable && currentPage > 1">
     <div class="button-section">
       <div class="button"
-           (click)="getInput(roverSelection.value, cameraSelection.value, solSelection.value, (page - 1))">Prev Page
+           (click)="getInput(currentRover, currentCamera, currentSol, (currentPage - 1))">Prev Page
       </div>
     </div>
   </div>
   <div *ngIf="!noPhotos && !serviceUnavailable && currentPhotos.length == 25">
     <div class="button-section">
       <div class="button"
-           (click)="getInput(roverSelection.value, cameraSelection.value, solSelection.value, (page + 1))">Next Page
+           (click)="getInput(currentRover, currentCamera, currentSol, (currentPage + 1))">Next Page
       </div>
     </div>
   </div>

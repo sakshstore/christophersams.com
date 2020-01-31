@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CuriosityCameras, OpportunityAndSpiritCameras, RoverCameras, RoverNames} from './rover.lists';
+import {CuriosityCameras, OpportunityAndSpiritCameras, RoverNames} from './rover.lists';
 import {RoverService} from './rover.service';
 import {Photo} from './photo';
 
@@ -38,15 +38,16 @@ export class RoverComponent implements OnInit {
   noPhotosError = 'There were no photos that matched your search, try again.';
   serviceUnavailable = false;
   serviceUnavailableError = 'We can\'t reach the Rover Photos service at the moment :(';
-  currentRover = 'curiosity';
   currentCameraList = this.camerasByRover.curiosity;
   currentPhotos: Photo[] = [];
   camerasFromSearchResults: [];
-  page = 1;
-  sol = 100;
+  currentRover = 'curiosity';
+  currentCamera = this.curiosityCameras[0];
+  currentPage = 1;
+  currentSol = 100;
 
   constructor(private roverService: RoverService) {
-    this.getInput(this.currentRover, this.curiosityCameras[0], this.sol, this.page);
+    this.getInput(this.currentRover, this.currentCamera, this.currentSol, this.currentPage);
   }
 
   ngOnInit() {
@@ -64,17 +65,18 @@ export class RoverComponent implements OnInit {
     page?: any
   ): Promise<void> {
     this.noPhotos = false;
+    this.currentCamera = camera as any;
 
-    (!page) ? this.page = 1 : this.page = page;
+    (!page) ? this.currentPage = 1 : this.currentPage = page;
 
     if (!sol) {
       alert('Please enter a sol.');
       return;
     } else {
-      this.sol = sol;
+      this.currentSol = sol;
     }
 
-    await this.roverService.getRoverResponse(rover as string, this.page, sol as string, camera as string)
+    await this.roverService.getRoverResponse(rover as string, this.currentPage, sol as string, camera as string)
       .subscribe(
         res =>  this.showData({ ...res.body }),
         (error) => this.displayError(error));
@@ -96,5 +98,6 @@ export class RoverComponent implements OnInit {
       this.currentPhotos = [];
     }
     console.log(data);
+    console.log(`Page: ${this.currentPage}`);
   }
 }
