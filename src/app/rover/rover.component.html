@@ -2,27 +2,27 @@
   <h1>Mars Rover Photo Search Engine</h1>
   <div class="form-input">
     <span class="form-label">Rover:</span>
-    <select #rover>
+    <select #roverSelection (change)="setRover(roverSelection.value)">
       <option *ngFor="let name of roverNames" [value]="name">{{name}}</option>
     </select>
     <span class="form-label">Camera:</span>
-    <select #camera>
-      <option *ngFor="let camera of allCameras" [value]="camera">{{camera}}</option>
+    <select #cameraSelection>
+      <option *ngFor="let camera of currentCameraList" [value]="camera">{{camera}}</option>
     </select>
     <span class="form-label">Sol:</span>
-    <input class="number-input" #sol type="text" value="100">
+    <input class="number-input" #solSelection type="number" value="{{currentSol}}">
     <br>
   </div>
   <div class="button-section">
     <div class="button"
-         (click)="getInput(rover.value, sol.value, camera.value)">Search
+         (click)="getInput(roverSelection.value, cameraSelection.value, solSelection.value, 1)">Search
     </div>
   </div>
 </div>
 <div class="search-results" *ngIf="noPhotos">{{noPhotosError}}</div>
 <div class="search-results" *ngIf="serviceUnavailable">{{serviceUnavailableError}}</div>
 <div *ngIf="!noPhotos && !serviceUnavailable">
-  <div class="search-results" *ngFor="let photo of photos">
+  <div class="search-results" *ngFor="let photo of currentPhotos">
     <a href="{{photo.img_src}}" target="_blank">
       <img class="rover-photos" src="{{photo.img_src}}" alt="Rover Photo">
     </a>
@@ -42,6 +42,20 @@
         <dd>Photos: {{photo.rover.total_photos}}</dd>
         <dd>Status: {{photo.rover.status}}</dd>
       </dl>
+    </div>
+  </div>
+  <div *ngIf="!noPhotos && !serviceUnavailable && currentPage > 1">
+    <div class="button-section">
+      <div class="button"
+           (click)="getInput(currentRover, currentCamera, currentSol, (currentPage - 1))">Prev Page
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!noPhotos && !serviceUnavailable && currentPhotos.length == 25">
+    <div class="button-section">
+      <div class="button"
+           (click)="getInput(currentRover, currentCamera, currentSol, (currentPage + 1))">Next Page
+      </div>
     </div>
   </div>
 </div>

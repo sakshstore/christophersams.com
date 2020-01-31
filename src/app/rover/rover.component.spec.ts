@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RoverComponent } from './rover.component';
 import {RoverService} from './rover.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import createSpy = jasmine.createSpy;
 
 describe('RoverComponent', () => {
   let component: RoverComponent;
@@ -30,11 +29,6 @@ describe('RoverComponent', () => {
   it('pulls in the rover names', () => {
     expect(component.roverNames).toBeDefined();
     expect(component.roverNames.length).toEqual(3);
-  });
-
-  it('pulls in the camera names', () => {
-    expect(component.allCameras).toBeDefined();
-    expect(component.allCameras.length).toEqual(9);
   });
 
   it('sets noPhotos to false', () => {
@@ -66,7 +60,7 @@ describe('RoverComponent', () => {
 
   it('calls getInput', () => {
     spyOn(component, 'getInput');
-    component.getInput('curiosity');
+    component.getInput('curiosity', 'FHAZ');
     expect(component.getInput).toHaveBeenCalled();
   });
 
@@ -74,5 +68,31 @@ describe('RoverComponent', () => {
     spyOn(component, 'displayError');
     component.displayError({});
     expect(component.serviceUnavailable).toBeTruthy();
+  });
+
+  it('sets the rover and cameraList when setRover is called', () => {
+    component.setRover('spirit');
+    expect(component.currentRover).toEqual('spirit');
+    expect(component.currentCameraList.length === component.camerasByRover.spirit.length).toBeTruthy();
+  });
+
+  it('sets the curiosityCameras on init', () => {
+    expect(component.curiosityCameras).toBeDefined();
+    expect(component.curiosityCameras.length).toEqual(6);
+  });
+
+  it('sets the opportunityOrSpiritCameras on init', () => {
+    expect(component.opportunityAndSpiritCameras).toBeDefined();
+    expect(component.opportunityAndSpiritCameras.length).toEqual(5);
+  });
+
+  it('sets the page on init', () => {
+    expect(component.currentPage).toBeDefined();
+    expect(component.currentPage).toEqual(1);
+  });
+
+  it('sets the sol on init', () => {
+    expect(component.currentSol).toBeDefined();
+    expect(component.currentSol).toEqual(100);
   });
 });

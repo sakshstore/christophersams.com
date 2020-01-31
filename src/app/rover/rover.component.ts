@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RoverCameras, RoverNames } from './rover.lists';
+import { CuriosityCameras, OpportunityAndSpiritCameras, RoverNames } from './rover.lists';
 import { RoverService } from './rover.service';
 import { Photo } from './photo';
 
@@ -14,62 +14,73 @@ export class RoverComponent implements OnInit {
     RoverNames.opportunity,
     RoverNames.spirit
   ];
-  allCameras = [
-    RoverCameras.FHAZ,
-    RoverCameras.RHAZ,
-    RoverCameras.MAST,
-    RoverCameras.CHEMCAM,
-    RoverCameras.MAHLI,
-    RoverCameras.MARDI,
-    RoverCameras.NAVCAM,
-    RoverCameras.PANCAM,
-    RoverCameras.MINITES
+  curiosityCameras = [
+    CuriosityCameras.FHAZ,
+    CuriosityCameras.RHAZ,
+    CuriosityCameras.MAST,
+    CuriosityCameras.CHEMCAM,
+    CuriosityCameras.MAHLI,
+    CuriosityCameras.NAVCAM
   ];
+  opportunityAndSpiritCameras = [
+    OpportunityAndSpiritCameras.FHAZ,
+    OpportunityAndSpiritCameras.RHAZ,
+    OpportunityAndSpiritCameras.NAVCAM,
+    OpportunityAndSpiritCameras.PANCAM,
+    OpportunityAndSpiritCameras.MINITES
+  ];
+  camerasByRover = {
+    curiosity: this.curiosityCameras,
+    opportunity: this.opportunityAndSpiritCameras,
+    spirit: this.opportunityAndSpiritCameras
+  };
   noPhotos = false;
   noPhotosError = 'There were no photos that matched your search, try again.';
   serviceUnavailable = false;
   serviceUnavailableError = 'We can\'t reach the Rover Photos service at the moment :(';
-  rover: string;
-  photos: Photo[] = [];
-  cameras: [];
+  currentCameraList = this.camerasByRover.curiosity;
+  currentPhotos: Photo[] = [];
+  camerasFromSearchResults: [];
+  currentRover = 'curiosity';
+  currentCamera = this.curiosityCameras[0];
+  currentPage = 1;
+  currentSol = 100;
 
   constructor(private roverService: RoverService) {
-    this.getInput('curiosity', '100', 'FHAZ', '1');
+    this.getInput(this.currentRover, this.currentCamera, this.currentSol, this.currentPage);
   }
 
   ngOnInit() {
   }
 
+  setRover(rover) {
+    this.currentRover = rover;
+    this.currentCameraList = this.camerasByRover[rover];
+  }
+
   async getInput(
     rover: string,
+    camera: string,
     sol?: any,
-    camera?: string,
     page?: any
   ): Promise<void> {
     this.noPhotos = false;
+    this.currentCamera = camera as any;
 
-    if (!page) {
-      page = '1';
-    }
+    (!page) ? this.currentPage = 1 : this.currentPage = page;
 
     if (!sol) {
-      alert('Please enter a sol.  This is the number of Mars days since the landing of the selected rover.');
-      return;
-    }
-
-    if (camera) {
-      await this.roverService.getRoverResponse(rover as string, page as string, sol as string, camera)
-        .subscribe(
-          res =>  this.showData({ ...res.body }),
-          (error) => this.displayError(error));
+      alert('Please enter a sol.');
       return;
     } else {
-      await this.roverService.getRoverResponse(rover as string, page as string, sol as string)
-        .subscribe(
-          res =>  this.showData({ ...res.body }),
-          (error) => this.displayError(error));
-      return;
+      this.currentSol = sol;
     }
+
+    await this.roverService.getRoverResponse(rover as string, this.currentPage, sol as string, camera as string)
+      .subscribe(
+        res =>  this.showData({ ...res.body }),
+        (error) => this.displayError(error));
+    return;
   }
 
   displayError(error) {
@@ -80,12 +91,13 @@ export class RoverComponent implements OnInit {
   showData(data) {
     this.serviceUnavailable = false;
     if (data.photos.length > 0) {
-      this.photos = data.photos as Photo[];
-      this.cameras = this.photos[0].rover.cameras;
+      this.currentPhotos = data.photos as Photo[];
+      this.camerasFromSearchResults = this.currentPhotos[0].rover.cameras;
     } else {
       this.noPhotos = true;
-      this.photos = [];
+      this.currentPhotos = [];
     }
     console.log(data);
+    console.log(`Page: ${this.currentPage}`);
   }
 }
