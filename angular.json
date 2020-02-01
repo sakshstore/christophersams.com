@@ -122,8 +122,13 @@
               "devServerTarget": "christophersams-com:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "christophersams-com"
 }
