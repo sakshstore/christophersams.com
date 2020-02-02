@@ -125,7 +125,12 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref": "/christophersams.com/",
+            "message": "build and deploy to gh-pages",
+            "name": "sanschristo",
+            "email": "christpher.sams@pcc.edu"
+          }
         }
       }
     }
